@@ -6,8 +6,17 @@ namespace App\ExampleModule\Domain;
 
 final class Adder implements AdderInterface
 {
-    public function add(int ...$numbers): int
+    private Clock $clock;
+
+    public function __construct(Clock $clock)
     {
-        return array_sum($numbers);
+        $this->clock = $clock;
+    }
+
+    public function add(string $inputDate): string
+    {
+        $datetimeImmutable = $this->clock->fromTime($inputDate);
+
+        return $datetimeImmutable->format('d/m/Y h:i');
     }
 }

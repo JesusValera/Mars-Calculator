@@ -6,5 +6,5 @@ namespace App\ExampleModule\Domain;
 
 interface AdderInterface
 {
-    public function add(int ...$numbers): int;
+    public function add(string $inputDate): string;
 }

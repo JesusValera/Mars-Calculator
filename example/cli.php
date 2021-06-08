@@ -7,9 +7,8 @@ use App\ExampleModule\Facade;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-dump($argv); // $argv[1] -> first param
-
+$inputDate = $argv[1] ?? 'now';
 $facade = new Facade();
-$sum = $facade->add(1, 2, 3);
+$output = $facade->add($inputDate);
 
-print "The sum: {$sum}" . PHP_EOL;
+print $output . PHP_EOL;

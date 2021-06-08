@@ -5,41 +5,26 @@ declare(strict_types=1);
 namespace Tests\Unit\ExampleModule\Domain;
 
 use App\ExampleModule\Domain\Adder;
-use Generator;
+use App\ExampleModule\Domain\Clock;
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
 final class AdderTest extends TestCase
 {
-    /**
-     * @dataProvider providerAdd
-     */
-    public function testItCanAdd(int $expected, array $numbers): void
+    public function testItCanAdd(): void
     {
-        $facade = new Adder();
+        $facade = new Adder($this->createClockStub());
 
-        self::assertSame($expected, $facade->add(...$numbers));
+        self::assertSame('09/06/2021 12:05', $facade->add('bla bla'));
     }
 
-    public function providerAdd(): Generator
+    private function createClockStub(): Clock
     {
-        yield 'when no numbers, the result is zero' => [
-            'expected' => 0,
-            'numbers' => [],
-        ];
-
-        yield 'when a single number, the result is the same number' => [
-            'expected' => 1,
-            'numbers' => [1],
-        ];
-
-        yield 'when two numbers, the result is the sum of both' => [
-            'expected' => 3,
-            'numbers' => [1, 2],
-        ];
-
-        yield 'when multiple numbers, the result is the sum of all of them' => [
-            'expected' => 10,
-            'numbers' => [1, 2, 3, 4],
-        ];
+        return new class() implements Clock {
+            public function fromTime(string $datetime): DateTimeImmutable
+            {
+                return DateTimeImmutable::createFromFormat('d/m/Y H:i:s', '09/06/2021 12:05:00');
+            }
+        };
     }
 }

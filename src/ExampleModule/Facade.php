@@ -11,10 +11,10 @@ use Gacela\Framework\AbstractFacade;
  */
 final class Facade extends AbstractFacade
 {
-    public function add(int ...$numbers): int
+    public function add(string $inputDate): string
     {
         return $this->getFactory()
             ->createAdder()
-            ->add(...$numbers);
+            ->add($inputDate);
     }
 }
