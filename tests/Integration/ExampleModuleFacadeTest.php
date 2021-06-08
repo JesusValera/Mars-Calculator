@@ -5,17 +5,11 @@ declare(strict_types=1);
 namespace Tests\Integration;
 
 use App\ExampleModule\Facade;
-use Gacela\Framework\Config;
 use Generator;
 use PHPUnit\Framework\TestCase;
 
 final class ExampleModuleFacadeTest extends TestCase
 {
-    public function setUp(): void
-    {
-        Config::setApplicationRootDir(__DIR__);
-    }
-
     /**
      * @dataProvider providerAdd
      */

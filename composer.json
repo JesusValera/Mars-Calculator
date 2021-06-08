@@ -1,12 +1,7 @@
 {
-    "description": "A basic PHP scaffolding",
-    "name": "chemaclass/php-scaffolding",
-    "type": "project",
-    "license": "MIT",
-    "keywords": [
-        "php",
-        "scaffolding"
-    ],
+    "description": "Transform Coordinated Universal Time (UTC) into Mars Sol Date (MSD) and Martian Coordinated Time (MTC)",
+    "name": "jesusvalera/mars-calculator",
+    "type": "microservice",
     "require": {
         "php": ">=7.4",
         "gacela-project/gacela": "dev-master"
