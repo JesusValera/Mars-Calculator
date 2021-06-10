@@ -3,12 +3,13 @@
 
 declare(strict_types=1);
 
-use App\ExampleModule\Facade;
+use App\MartTime\MartTimeFacade;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-$inputDate = $argv[1] ?? 'now';
-$facade = new Facade();
-$output = $facade->add($inputDate);
+// Atomic format (example: 2005-08-15T15:52:01+00:00)
+$inputDate = $argv[1] ?? (new DateTimeImmutable())->format(DateTimeImmutable::ATOM);
+$facade = new MartTimeFacade();
+$output = $facade->transformFromUTC($inputDate);
 
-print $output . PHP_EOL;
+dump($output->toJson());

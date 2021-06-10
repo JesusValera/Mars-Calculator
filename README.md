@@ -1,34 +1,19 @@
-# PHP Scaffolding
+# MSD & MTC calculator
 
-[![MIT Software License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+A microservice that receives the time on Earth in UTC as an input
+and return two values: the Mars Sol Date (MSD), and the Martian Coordinated Time (MTC).
 
-This is a scaffolding for PHP projects. A basic structure ready to start coding in `src` and `tests`.
+### Usage
 
-### Some composer scripts
+In order to run the application, you need to run the PHP file from `example/cli.php`.
+If you don't provide any argument, the datetime will be from "now", else, you MUST specify it in [Atomic system](https://www.php.net/manual/en/class.datetimeinterface.php#datetime.constants.atom): (`Y-m-d\TH:i:sP`).
 
-```bash
-composer test-all     # run test-quality & test-unit
-composer test-quality # run csrun & psalm
-composer test-unit    # run phpunit
+### Examples
 
-composer csrun  # check code style
-composer psalm  # run Psalm coverage
+```php
+php example/cli.php
+> {"mars_sol_date":52413.096631128385,"martian_coordinated_time":2.319147081230767}
+
+php example/cli.php 2005-08-15T15:52:01+00:00
+> {"mars_sol_date":46789.69107901298,"martian_coordinated_time":16.58589631144423}
 ```
-
-### Git hooks
-
-* `pre-commit.sh`
-* `pre-push.sh`
-
-#### Installation
-
-```bash
-ln -s tools/scripts/git-hooks/pre-commit.sh .git/hooks/pre-commit
-ln -s tools/scripts/git-hooks/pre-push.sh .git/hooks/pre-push
-```
-
-### Contributions
-
-Feel free to open any PR with your ideas, suggestions or improvements.
-
-Or contact me directly via [Twitter](https://twitter.com/Chemaclass).
